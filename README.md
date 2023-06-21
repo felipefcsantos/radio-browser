@@ -12,7 +12,7 @@ Acabei notando um erro da minha parte que foi não ter estruturado o código ini
 
 Para reproduzir e pasar, utilizei um próprio método od JS, Audio. Pensei em utilizar a tag HTML '<audio>', mas preferi criar os meus próprios botões de reprodução.
 
-É NCESSÁRIO PAUSAR A RÁIO ATUAL PARA INICIAR A PRÓXIMA.
+É NCESSÁRIO PAUSAR A RÁDIO ATUAL PARA INICIAR A PRÓXIMA.
 
 ## Acessando Online
 

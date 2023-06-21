@@ -1,16 +1,6 @@
 # Radio Browser
 
-Este foi um dsafio realizado para uma vaga de Front-End. Nele eu deveria criar uma rádio online consumindo a REST API: https://de1.api.radio-browser.info/ 
-
-Iniciei o processo estudando a API e decidindo qual CSS Framework iria utilizar. Acabei por escolher o Material UI, pois é o que tenho mais afinidade.
-
-Utilizei a lib Axios para consumo da API.
-
-Parti para a construção das funcionalidades inicialmente, sem se preocupar com estética, deixando todas as funções que eram obrigatórias no desafio funcionando. 
-
-Acabei notando um erro da minha parte que foi não ter estruturado o código inicial e depois passar para a construção das funções. Isso me gerou um retrabalho, tendo que refatorar todo o código para organiza-lo.
-
-Para reproduzir e pasar, utilizei um próprio método od JS, Audio. Pensei em utilizar a tag HTML '<audio>', mas preferi criar os meus próprios botões de reprodução.
+Esta é uma Rádio Online, onde o usuário pode pesquisar por rádios de todo o mundo e criar uma lista de rádios favoritas.
 
 É NCESSÁRIO PAUSAR A RÁDIO ATUAL PARA INICIAR A PRÓXIMA.
 

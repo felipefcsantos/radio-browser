@@ -10,7 +10,9 @@ Parti para a construção das funcionalidades inicialmente, sem se preocupar com
 
 Acabei notando um erro da minha parte que foi não ter estruturado o código inicial e depois passar para a construção das funções. Isso me gerou um retrabalho, tendo que refatorar todo o código para organiza-lo.
 
-Para re produzir e pasar, utilizei um próprio método od JS, Audio. Pensei em utilizar a tag HTML '<audio>', mas preferi criar os meus próprios botões de reprodução.
+Para reproduzir e pasar, utilizei um próprio método od JS, Audio. Pensei em utilizar a tag HTML '<audio>', mas preferi criar os meus próprios botões de reprodução.
+
+É NCESSÁRIO PAUSAR A RÁIO ATUAL PARA INICIAR A PRÓXIMA.
 
 ## Acessando Online
 

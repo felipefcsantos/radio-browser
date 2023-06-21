@@ -12,7 +12,13 @@ Acabei notando um erro da minha parte que foi não ter estruturado o código ini
 
 Para re produzir e pasar, utilizei um próprio método od JS, Audio. Pensei em utilizar a tag HTML '<audio>', mas preferi criar os meus próprios botões de reprodução.
 
-## Rodando na sua máquina
+## Acessando Online
+
+Acesse pelo link: 
+
+[https://radio-browser.vercel.app](https://radio-browser.vercel.app)
+
+## Rodando na sua máquina em DEV.
 
 No diretório do projeto, abre o terminal e rode o camando:
 

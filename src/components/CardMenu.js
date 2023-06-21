@@ -16,7 +16,7 @@ export default function CardMenu({ dados}) {
     const url = dados.url_resolved
     const pais = dados.country
     const lingua = dados.language
-    let nome = dados.name
+    let nome = dados.name.trim()
     const ehFavorito = keys.some((fav) => fav === id);
     const icone = ehFavorito ? favoritar : desfavorito;
 

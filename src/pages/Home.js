@@ -213,7 +213,7 @@ export default function Home(props) {
                      <DrawerHeader sx={{ margin: '1rem .3rem' }}>
                         <TextField
                             id="outlined-basic"
-                            label="Pesquisar"
+                            label="Pesquisar no Mundo"
                             variant="outlined"
                             value={info}
                             onChange={(e) => {setInfo(e.target.value)}}

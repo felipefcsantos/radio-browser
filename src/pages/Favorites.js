@@ -55,7 +55,7 @@ export default function Favorites() {
           <div >
             <TextField
               id="outlined-basic"
-              label="Pesquisar"
+              label="Pesquisar Favoritos"
               variant="outlined"
               value={info}
               onChange={(e) => setInfo(e.target.value)}

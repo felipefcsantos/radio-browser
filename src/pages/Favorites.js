@@ -5,9 +5,11 @@ import { Box, Container, Divider, MenuItem, Select, TextField, Typography } from
 import SearchIcon from '@mui/icons-material/Search';
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import RadioIcon from '@mui/icons-material/Radio';
+import { useFavoritoContext } from '../contexts/Favoritar';
 
 
 export default function Favorites() {
+  const { favorito } = useFavoritoContext();
   const { musicaAtual } = useContext(MusicaAtualContext)
   const [info, setInfo] = useState()
   const [options, setOptions] = useState('pais')

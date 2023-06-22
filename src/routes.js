@@ -7,6 +7,7 @@ import TocandoProvider from './contexts/Tocando'
 import DadosProvider from './contexts/Dados'
 import GetApi from './services/GetApi'
 import Home from './pages/Home'
+import MusicaParalelaProvider from './contexts/MusicaParalela'
 
 export default function AppRoutes() {
     return (
@@ -15,13 +16,15 @@ export default function AppRoutes() {
                 <PaginasProvider>
                     <GetApi />
                     <MusicaAtualProvider>
-                        <TocandoProvider>
-                            <FavoritosProvider>
+                        <MusicaParalelaProvider>
+                            <TocandoProvider>
+                                <FavoritosProvider>
                                     <Routes>
                                         <Route path='/' element={<Home />} />
                                     </Routes>
-                            </FavoritosProvider>
-                        </TocandoProvider>
+                                </FavoritosProvider>
+                            </TocandoProvider>
+                        </MusicaParalelaProvider>
                     </MusicaAtualProvider>
                 </PaginasProvider>
             </DadosProvider>

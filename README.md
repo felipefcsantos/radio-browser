@@ -2,8 +2,6 @@
 
 Esta é uma Rádio Online, onde o usuário pode pesquisar por rádios de todo o mundo e criar uma lista de rádios favoritas.
 
-É NECESSÁRIO PAUSAR A RÁDIO ATUAL PARA INICIAR A PRÓXIMA.
-
 ALGUMAS RÁDIOS PODEM DEMORAR UM POUCO MAIS QUE OUTRAS PARA COMEÇAR A REPRODUZIR.
 
 ## Acessando Online

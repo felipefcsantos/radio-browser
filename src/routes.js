@@ -4,7 +4,6 @@ import FavoritosProvider from './contexts/Favoritar'
 import PaginasProvider from './contexts/Paginas'
 import MusicaAtualProvider from './contexts/MusicaAtual'
 import TocandoProvider from './contexts/Tocando'
-import EditarNomeProvider from './contexts/EditarNome'
 import DadosProvider from './contexts/Dados'
 import GetApi from './services/GetApi'
 import Home from './pages/Home'
@@ -18,11 +17,9 @@ export default function AppRoutes() {
                     <MusicaAtualProvider>
                         <TocandoProvider>
                             <FavoritosProvider>
-                                <EditarNomeProvider>
                                     <Routes>
                                         <Route path='/' element={<Home />} />
                                     </Routes>
-                                </EditarNomeProvider>
                             </FavoritosProvider>
                         </TocandoProvider>
                     </MusicaAtualProvider>

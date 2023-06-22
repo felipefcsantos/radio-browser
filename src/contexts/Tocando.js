@@ -1,5 +1,5 @@
 import { createContext, useContext, useRef, useState } from "react";
-import { useMusicaAtualContext } from "./MusicaAtual";
+import { MusicaAtualContext } from "./MusicaAtual";
 
 export const TocandoContext = createContext();
 TocandoContext.displayName = 'Tocando';
@@ -18,7 +18,7 @@ export default function TocandoProvider({ children }) {
 export function useTocandoContext(){
 
     const {tocando, setTocando} = useContext(TocandoContext);
-    const {musicaAtual, setMusicaAtual} = useMusicaAtualContext()
+    const {musicaAtual, setMusicaAtual} = useContext(MusicaAtualContext)
     const [oldUrl, setOldUrl] = useState()
     const songRef = useRef()
     

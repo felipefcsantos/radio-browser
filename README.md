@@ -2,7 +2,9 @@
 
 Esta é uma Rádio Online, onde o usuário pode pesquisar por rádios de todo o mundo e criar uma lista de rádios favoritas.
 
-É NCESSÁRIO PAUSAR A RÁDIO ATUAL PARA INICIAR A PRÓXIMA.
+É NECESSÁRIO PAUSAR A RÁDIO ATUAL PARA INICIAR A PRÓXIMA.
+
+ALGUMAS RÁDIOS PODEM DEMORAR UM POUCO MAIS QUE OUTRAS PARA COMEÇAR A REPRODUZIR.
 
 ## Acessando Online
 
@@ -12,11 +14,19 @@ Acesse pelo link:
 
 ## Rodando na sua máquina em DEV.
 
-No diretório do projeto, abre o terminal e rode o camando:
+No diretório do projeto, abra o terminal e execute o camando:
+
+### `npm install`
+
+Com isso, ele fará o download de todas as dependências do projeto.
+
+Em seguida, execute:
 
 ### `npm start`
 
 O seu navegador padrão irá abrir no [http://localhost:3000](http://localhost:3000).
+
+O projeto estará rodando!
 
 # Informações sobre o desafio
 

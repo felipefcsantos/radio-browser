@@ -1,6 +1,5 @@
-import React, { useState } from 'react'
-import { useFavoritoContext } from '../contexts/Favoritar'
-import { useMusicaAtualContext } from '../contexts/MusicaAtual';
+import React, { useContext, useState } from 'react'
+import { MusicaAtualContext } from '../contexts/MusicaAtual';
 import CardFavoritos from '../components/CardFavoritos';
 import { Box, Container, Divider, MenuItem, Select, TextField, Typography } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
@@ -9,8 +8,7 @@ import RadioIcon from '@mui/icons-material/Radio';
 
 
 export default function Favorites() {
-  const { favorito } = useFavoritoContext();
-  const { musicaAtual } = useMusicaAtualContext()
+  const { musicaAtual } = useContext(MusicaAtualContext)
   const [info, setInfo] = useState()
   const [options, setOptions] = useState('pais')
   const [favoritos, setFavoritos] = useState()
@@ -49,9 +47,14 @@ export default function Favorites() {
   return (
     <Container sx={{ background: 'linear-gradient(135deg, #fcfcfc 0%, #c2d9f0 100%)', borderRadius: '10px', padding: '1rem', boxShadow: '3px 3px 7px 1px #000000' }}>
 
-      <div style={{marginBottom: '2rem'}}>
-        <div style={{ display: 'flex', justifyContent: 'space-between'}}>
-          <RadioIcon />
+      <div style={{ marginBottom: '2rem' }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+          <div>
+            <RadioIcon />
+            <Typography variant='h4'>
+              Favorite Radios
+            </Typography>
+          </div>
           <div >
             <TextField
               id="outlined-basic"
@@ -78,14 +81,15 @@ export default function Favorites() {
                 Nome
               </MenuItem>
             </Select>
-          <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'end'}}>
-            <SearchIcon onClick={() => pesquisa()} sx={{ cursor: 'pointer' }} />
-            <DeleteOutlineIcon onClick={() => limpar()} sx={{ cursor: 'pointer' }} />
-          </div>
+            <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'end' }}>
+              <SearchIcon onClick={() => pesquisa()} sx={{ cursor: 'pointer' }} />
+              <DeleteOutlineIcon onClick={() => limpar()} sx={{ cursor: 'pointer' }} />
+            </div>
           </div>
 
         </div>
         <Box
+
           sx={{
             background: '#ffffff',
             borderRadius: '10px',
@@ -96,16 +100,17 @@ export default function Favorites() {
             display: 'flex',
             alignItems: 'center'
           }}>
-          <Typography variant='h4'>{musicaAtual.nome}</Typography>
+          <Typography variant='h4'>
+
+            {musicaAtual.nome ? musicaAtual.nome : <Typography variant='h4' sx={{color: '#dedede'}}> Rádio Atual </Typography>}
+
+          </Typography>
         </Box>
 
       </div>
 
       <Divider />
 
-      <Typography variant='h4'>
-        Favorite Radios
-      </Typography>
       {clear ? favoritos.map((fav) => {
         return <CardFavoritos {...JSON.parse(localStorage.getItem(fav))} key={fav} />
       }) : keys.map((fav) => {

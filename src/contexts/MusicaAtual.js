@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useState } from "react";
 
 export const MusicaAtualContext = createContext();
 MusicaAtualContext.displayName = 'MusicaAtual';
@@ -14,13 +14,4 @@ export default function MusicaAtualProvider({ children }) {
     )
 }
 
-export function useMusicaAtualContext(){
-    const {musicaAtual, setMusicaAtual} = useContext(MusicaAtualContext);
-    // console.log(musicaAtual.url);
-    return {
-        musicaAtual,
-        setMusicaAtual
-
-    }
-}
 

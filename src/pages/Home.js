@@ -9,19 +9,15 @@ import List from '@mui/material/List';
 import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
-import { MenuItem, Select, TextField, useTheme } from '@mui/material';
+import { useTheme } from '@mui/material';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import { styled } from '@mui/material/styles';
 import { DadosContext } from '../contexts/Dados';
-import api from '../services/api';
-import { usePaginasContext } from '../contexts/Paginas';
-import SearchIcon from '@mui/icons-material/Search';
-import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import CardMenu from '../components/CardMenu';
-import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
-import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import Favorites from './Favorites';
+import Pagination from '../components/Pagination';
+import Search from '../components/Search';
 
 const drawerWidth = 375;
 
@@ -30,7 +26,6 @@ const DrawerHeader = styled('div')(({ theme }) => ({
     display: 'flex',
     alignItems: 'center',
     padding: theme.spacing(0, 1),
-    // necessary for content to be below app bar
     ...theme.mixins.toolbar,
     justifyContent: 'flex-end',
 }));
@@ -39,34 +34,7 @@ export default function Home(props) {
     const { window } = props;
     const theme = useTheme();
     const [mobileOpen, setMobileOpen] = React.useState(false);
-    const { paginas, paginacao } = usePaginasContext()
-    const [info, setInfo] = React.useState()
-    const [option, setOption] = React.useState('country=')
     const { dados, setDados } = React.useContext(DadosContext);
-
-    function titleize() {
-        var words = info.toLowerCase().split(" ");
-        for (var a = 0; a < words.length; a++) {
-            var w = words[a];
-            words[a] = w[0].toUpperCase() + w.slice(1);
-        }
-        return pesquisar(words.join(" "));
-    }
-
-    function pesquisar(info) {
-
-        api
-            .get(`search?${option}${option === 'language=' ? info.toLowerCase() : info}&offset=${paginas}&limit=10&hidebroken=false`)
-            .then((response) => setDados(response.data))
-        setInfo('')
-    }
-
-    function limpar() {
-        setInfo('')
-        setOption('')
-        return (pesquisar(info))
-
-    }
 
     const handleDrawerToggle = () => {
         setMobileOpen(!mobileOpen);
@@ -125,82 +93,29 @@ export default function Home(props) {
                     }}
                 >
                     <DrawerHeader sx={{ margin: '1rem .3rem' }}>
-                        <TextField
-                            id="outlined-basic"
-                            label="Pesquisar"
-                            variant="outlined"
-                            value={info}
-                            onChange={(e) => setInfo(e.target.value)}
-                        />
-                        <Select
-                            labelId="demo-simple-select-label"
-                            id="demo-simple-select"
-                            value={option}
-                            help
-                            onChange={(e) => setOption(e.target.value)}
-                        >
 
-                            <MenuItem value='country='>
-                                País
-                            </MenuItem>
-                            <MenuItem value='language='>
-                                Lingua
-                            </MenuItem>
-                            <MenuItem value='name='>
-                                Nome
-                            </MenuItem>
-                        </Select>
+                        <Search />
 
-                        <SearchIcon onClick={() => titleize()} sx={{ cursor: 'pointer' }} />
-                        <DeleteOutlineIcon onClick={() => limpar()} sx={{ cursor: 'pointer' }}/>
                         <IconButton onClick={handleDrawerClose}>
                             {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
                         </IconButton>
                     </DrawerHeader>
-                    <Divider/>
+                    <Divider />
                     <List>
-                    <div
-                        style={{
-                            display: 'flex',
-                            justifyContent: 'space-around',
-                            margin: '.5rem'
-                        }}>
-                        <ArrowBackIosIcon
-                            onClick={() =>  {paginacao('voltar')} }
-                            sx={{ cursor: 'pointer' }}
-                        />
 
-                        {(paginas / 10) + 1}
-
-                        <ArrowForwardIosIcon
-                            onClick={() =>  {paginacao('avançar')} }
-                            sx={{ cursor: 'pointer' }}
-                        />
-                    </div>
+                        <Pagination />
 
 
-                    {dados.map((event) => {
+                        {dados.map((event) => {
 
-                        return (
-                            <CardMenu key={event.changeuuid} dados={event} />
-                        )
-                    })}
+                            return (
+                                <CardMenu key={event.changeuuid} dados={event} />
+                            )
+                        })}
 
+                        <Pagination />
 
-                    <div style={{ display: 'flex', justifyContent: 'space-around', margin: '.5rem' }}>
-                        <ArrowBackIosIcon
-                            onClick={() => { paginacao('voltar') }}
-                            sx={{ cursor: 'pointer' }}
-                        />
-
-                        {(paginas / 10) + 1}
-
-                        <ArrowForwardIosIcon
-                            onClick={() => { paginacao('avançar') }}
-                            sx={{ cursor: 'pointer' }}
-                        />
-                    </div>
-                </List>
+                    </List>
                 </Drawer>
                 <Drawer
                     variant="permanent"
@@ -210,80 +125,26 @@ export default function Home(props) {
                     }}
                     open
                 >
-                     <DrawerHeader sx={{ margin: '1rem .3rem' }}>
-                        <TextField
-                            id="outlined-basic"
-                            label="Pesquisar no Mundo"
-                            variant="outlined"
-                            value={info}
-                            onChange={(e) => {setInfo(e.target.value)}}
-                        />
-                        <Select
-                            labelId="demo-simple-select-label"
-                            id="demo-simple-select"
-                            value={option}
-                            help
-                            onChange={(e) => setOption(e.target.value)}
-                        >
+                    <DrawerHeader sx={{ margin: '1rem .3rem' }}>
 
-                            <MenuItem value='country='>
-                                País
-                            </MenuItem>
-                            <MenuItem value='language='>
-                                Lingua
-                            </MenuItem>
-                            <MenuItem value='name='>
-                                Nome
-                            </MenuItem>
-                        </Select>
-
-                        <SearchIcon onClick={() => titleize()} sx={{ cursor: 'pointer' }} />
-                        <DeleteOutlineIcon onClick={() => limpar()} sx={{ cursor: 'pointer' }}/>
+                        <Search />
+                        
                     </DrawerHeader>
-                    <Divider/>
+                    <Divider />
                     <List>
-                    <div
-                        style={{
-                            display: 'flex',
-                            justifyContent: 'space-around',
-                            margin: '.5rem'
-                        }}>
-                        <ArrowBackIosIcon
-                            onClick={() => { paginacao('voltar') }}
-                            sx={{ cursor: 'pointer' }}
-                        />
 
-                        {(paginas / 10) + 1}
+                        <Pagination />
 
-                        <ArrowForwardIosIcon
-                            onClick={() => { paginacao('avançar') }}
-                            sx={{ cursor: 'pointer' }}
-                        />
-                    </div>
+                        {dados.map((event) => {
 
+                            return (
+                                <CardMenu key={event.changeuuid} dados={event} />
+                            )
+                        })}
 
-                    {dados.map((event) => {
+                        <Pagination />
 
-                        return (
-                            <CardMenu key={event.changeuuid} dados={event} />
-                        )
-                    })}
-
-
-                    <div style={{ display: 'flex', justifyContent: 'space-around', margin: '.5rem' }}>
-                        <ArrowBackIosIcon
-                            onClick={() => { paginacao('voltar') }}
-                            sx={{ cursor: 'pointer' }}
-                        />
-
-                        {(paginas / 10) + 1}
-
-                        <ArrowForwardIosIcon
-                            onClick={() => { paginacao('avançar') }}
-                            sx={{ cursor: 'pointer' }}
-                        />
-                    </div>
-                </List>
+                    </List>
                 </Drawer>
             </Box>
             <Box

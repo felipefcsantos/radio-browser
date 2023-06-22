@@ -1,6 +1,6 @@
 import { createContext, useContext, useRef, useState } from "react";
 import { MusicaAtualContext } from "./MusicaAtual";
-import { MusicaParalelaContext, useMusicaParalelaContext } from "./MusicaParalela";
+import { useMusicaParalelaContext } from "./MusicaParalela";
 
 export const TocandoContext = createContext();
 TocandoContext.displayName = 'Tocando';
